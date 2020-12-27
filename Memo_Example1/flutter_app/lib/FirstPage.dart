@@ -1,6 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/SecondPage.dart';
+import 'package:flutter_app/SimpleState.dart';
+import 'package:provider/provider.dart';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -13,26 +16,40 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(title: Text("플러스 버튼을 눌러주세요")),
+      appBar: AppBar(title: Text("메모를 추가해주세요")),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           setState(() {
-            list.add("${Random().nextInt(2000)}");
+            //list.add("${Random().nextInt(2000)}");
+            Navigator.pushNamed(context, '/secondPage');
           });
         },
         child: Icon(
             Icons.add
         ),
       ),
-      body: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 30),
-              height: 50,
-              child: Text("${list[index]}")
+      body: Consumer<SimpleState>(
+        builder: (context, state, child){
+          return ListView.builder(
+            itemCount: state.getMemo().length,
+            //itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: (){
+                  state.removeMemo(index);
+                },
+                child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    height: 50,
+                    child: Text(
+                        "${state.getMemo()[index]}"
+                    )
+                ),
+              );
+            },
           );
         },
       ),

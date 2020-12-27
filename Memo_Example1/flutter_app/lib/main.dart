@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/SecondPage.dart';
+import 'package:flutter_app/SimpleState.dart';
+import 'package:provider/provider.dart';
 
 import 'FirstPage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    child: MyApp(),
+    create: (context) => SimpleState(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FirstPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context) => FirstPage(),
+        '/secondPage': (BuildContext context) => SecondPage(),
+      },
     );
   }
 }
