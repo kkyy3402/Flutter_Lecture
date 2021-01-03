@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigator_example/Common/CommonDrawer.dart';
 import 'package:navigator_example/Pages/MainPage.dart';
 
 import 'Pages/Page1.dart';
