@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/SimpleState.dart';
+import 'package:flutter_app/Model/MemoItem.dart';
 import 'package:provider/provider.dart';
 
-class SecondPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController _contentTextController;
 
@@ -26,7 +26,7 @@ class _SecondPageState extends State<SecondPage> {
       appBar: AppBar(
         title: Text("아이템을 추가해주세요"),
       ),
-      body: Consumer<SimpleState>(
+      body: Consumer<MemoItem>(
         builder: (widget, state, child){
           return Container(
             padding: EdgeInsets.all(16),

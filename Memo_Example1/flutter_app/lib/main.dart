@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/SecondPage.dart';
-import 'package:flutter_app/SimpleState.dart';
+import 'package:flutter_app/Pages/RegisterPage.dart';
+import 'package:flutter_app/Model/MemoItem.dart';
 import 'package:provider/provider.dart';
 
-import 'FirstPage.dart';
+import 'Pages/MainPage.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    child: MyApp(),
-    create: (context) => SimpleState(),
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => FirstPage(),
-        '/secondPage': (BuildContext context) => SecondPage(),
-      },
+    return ChangeNotifierProvider(
+      create: (context) => MemoItem(),
+      child: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (BuildContext context) => MainPage(),
+          '/secondPage': (BuildContext context) => RegisterPage(),
+        },
+      ),
     );
   }
 }

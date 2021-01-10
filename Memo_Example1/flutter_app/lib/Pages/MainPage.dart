@@ -1,16 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/SecondPage.dart';
-import 'package:flutter_app/SimpleState.dart';
+import 'package:flutter_app/Pages/RegisterPage.dart';
+import 'package:flutter_app/Model/MemoItem.dart';
 import 'package:provider/provider.dart';
 
-class FirstPage extends StatefulWidget {
+class MainPage extends StatefulWidget {
   @override
-  _FirstPageState createState() => _FirstPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _MainPageState extends State<MainPage> {
 
   List<String> list = [];
 
@@ -30,7 +30,7 @@ class _FirstPageState extends State<FirstPage> {
             Icons.add
         ),
       ),
-      body: Consumer<SimpleState>(
+      body: Consumer<MemoItem>(
         builder: (context, state, child){
           return ListView.builder(
             itemCount: state.getMemo().length,

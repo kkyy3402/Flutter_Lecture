@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class SimpleState extends ChangeNotifier {
+class MemoItem extends ChangeNotifier {
 
   List<String> _memoList = [];
 
